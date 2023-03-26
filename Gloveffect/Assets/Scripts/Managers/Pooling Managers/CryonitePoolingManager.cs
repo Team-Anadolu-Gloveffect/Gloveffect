@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WaterPoolingManager : MonoBehaviour
+public class CryonitePoolingManager : MonoBehaviour
 {
     #region Singleton
 
-    public static WaterPoolingManager Instance;
+    public static CryonitePoolingManager Instance;
 
     private void Awake()
     {

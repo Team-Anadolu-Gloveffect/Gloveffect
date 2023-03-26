@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WaterGun : MonoBehaviour
+public class CryoniteGloves : MonoBehaviour
 {
-    [SerializeField] private LumisiumPoolingManager poolingManager;
+    [SerializeField] private CryonitePoolingManager poolingManager;
     [SerializeField] private Transform gunMuzzle;
     [SerializeField] private float bulletSpeed = 10;
 
@@ -18,7 +18,7 @@ public class WaterGun : MonoBehaviour
     }
     private void FireBulletWithPooling()
     {
-        var bullet = LumisiumPoolingManager.Instance.DequeuePoolableGameObject();
+        var bullet = CryonitePoolingManager.Instance.DequeuePoolableGameObject();
         bullet.transform.position = gunMuzzle.position;
         bullet.GetComponent<BulletController>().IsCalledByPooling = true;
         bullet.GetComponent<Rigidbody>().AddForce(gunMuzzle.forward * bulletSpeed, ForceMode.Impulse);

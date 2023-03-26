@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class CharacterSetupPhase : MonoBehaviour
 {
-    [SerializeField] private Collider collider;
+    [SerializeField] private Collider playerCollider;
     [SerializeField] private CharacterController characterController;
     [SerializeField] private float movementSpeed = 2f;
     [SerializeField] private float turnSpeed = 2f;
@@ -27,7 +27,7 @@ public class CharacterSetupPhase : MonoBehaviour
 
     private void AssignComponents()
     {
-        if (collider == null) collider = GetComponent<Collider>();
+        if (GetComponent<Collider>() == null) playerCollider = GetComponent<Collider>();
         if (characterController == null) characterController = GetComponent<CharacterController>();
     }
 
@@ -43,16 +43,6 @@ public class CharacterSetupPhase : MonoBehaviour
         Move();
         Rotate();
     }
-
-    public void OnTriggerEnter(Collider other)
-    {
-        if(other.CompareTag("FireGun"))
-            IsFire= true;
-        if (other.CompareTag("WaterGun"))
-            IsWater = true;
-
-    }
-
 
     private Vector2 GetMovementInputData()
     {

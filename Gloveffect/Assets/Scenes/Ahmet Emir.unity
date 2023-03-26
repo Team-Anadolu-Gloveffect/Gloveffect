@@ -137,7 +137,7 @@ GameObject:
   - component: {fileID: 117605468}
   - component: {fileID: 117605472}
   m_Layer: 0
-  m_Name: WaterGun
+  m_Name: LumisiumGloves
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -236,6 +236,54 @@ MonoBehaviour:
   poolingManager: {fileID: 943286589}
   gunMuzzle: {fileID: 1637630910}
   bulletSpeed: 20
+--- !u!1 &556205697
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 556205699}
+  - component: {fileID: 556205698}
+  m_Layer: 0
+  m_Name: CryonitePoolingManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &556205698
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 556205697}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26e6972738ca1694eb22a551062e9921, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  poolParent: {fileID: 1113768483}
+  poolPrefab: {fileID: 4108959029531468941, guid: 7ca645679d28b3349ad9a52ede690aa3, type: 3}
+  poolAmount: 100
+--- !u!4 &556205699
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 556205697}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1113768484}
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &631635283
 GameObject:
   m_ObjectHideFlags: 0
@@ -247,7 +295,7 @@ GameObject:
   - component: {fileID: 631635285}
   - component: {fileID: 631635284}
   m_Layer: 0
-  m_Name: FirePoolingManager
+  m_Name: FlametronPoolingManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -295,7 +343,7 @@ GameObject:
   - component: {fileID: 943286588}
   - component: {fileID: 943286589}
   m_Layer: 0
-  m_Name: WaterPoolingManager
+  m_Name: LumisiumPoolingManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -419,6 +467,37 @@ Transform:
   m_Father: {fileID: 1151317988}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1113768483
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1113768484}
+  m_Layer: 0
+  m_Name: PoolParent
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1113768484
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1113768483}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 556205699}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1151317983
 GameObject:
   m_ObjectHideFlags: 0
@@ -481,7 +560,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8b1a660a32036b45a22e75b988827b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  collider: {fileID: 0}
+  playerCollider: {fileID: 0}
   characterController: {fileID: 1151317987}
   movementSpeed: 5
   turnSpeed: 2
@@ -631,7 +710,7 @@ GameObject:
   - component: {fileID: 1450460075}
   - component: {fileID: 1450460079}
   m_Layer: 0
-  m_Name: FireGun
+  m_Name: FlametronGloves
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1013,13 +1092,14 @@ GameObject:
   - component: {fileID: 2095738628}
   - component: {fileID: 2095738627}
   - component: {fileID: 2095738626}
+  - component: {fileID: 2095738630}
   m_Layer: 0
-  m_Name: ThunderGun
+  m_Name: CryoniteGloves
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!65 &2095738626
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1098,3 +1178,18 @@ Transform:
   m_Father: {fileID: 1030028876}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2095738630
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2095738625}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02b8baf40156032409b6cbc7a0ed734d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  poolingManager: {fileID: 556205698}
+  gunMuzzle: {fileID: 1637630910}
+  bulletSpeed: 20

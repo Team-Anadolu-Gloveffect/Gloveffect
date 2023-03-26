@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FirePoolingManager : MonoBehaviour
+public class FlametronPoolingManager : MonoBehaviour
 {
     #region Singleton
 
-    public static FirePoolingManager Instance;
+    public static FlametronPoolingManager Instance;
 
     private void Awake()
     {

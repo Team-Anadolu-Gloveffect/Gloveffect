@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 4186256742620571657}
   - component: {fileID: 6535977706501896249}
   m_Layer: 0
-  m_Name: FireSpell
+  m_Name: FlametronSpell
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -128,3 +128,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f90cf4513727734783838f669fedb79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IsCalledByPooling: 0

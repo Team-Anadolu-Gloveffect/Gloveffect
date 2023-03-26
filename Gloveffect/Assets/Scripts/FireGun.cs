@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class FireGun : MonoBehaviour
 {
-    [SerializeField] private FirePoolingManager poolingManager;
+    [SerializeField] private FlametronPoolingManager poolingManager;
     [SerializeField] private Transform gunMuzzle;
     [SerializeField] private float bulletSpeed = 10;
 
@@ -18,7 +18,7 @@ public class FireGun : MonoBehaviour
     }
     private void FireBulletWithPooling()
     {
-        var bullet = FirePoolingManager.Instance.DequeuePoolableGameObject();
+        var bullet = FlametronPoolingManager.Instance.DequeuePoolableGameObject();
         bullet.transform.position = gunMuzzle.position;
         bullet.GetComponent<BulletController>().IsCalledByPooling = true;
         bullet.GetComponent<Rigidbody>().AddForce(gunMuzzle.forward * bulletSpeed, ForceMode.Impulse);
