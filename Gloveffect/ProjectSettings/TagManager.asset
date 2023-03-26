@@ -6,6 +6,12 @@ TagManager:
   tags:
   - FireGun
   - WaterGun
+  - RightF
+  - RightL
+  - RightC
+  - LeftF
+  - LeftL
+  - LeftC
   layers:
   - Default
   - TransparentFX

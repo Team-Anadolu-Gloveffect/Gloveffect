@@ -13,6 +13,8 @@ public class CharacterSetupPhase : MonoBehaviour
     //[SerializeField] private GameObject fireBulletPrefab, waterBulletPrefab;
     //[SerializeField] private Transform gunMuzzle;
     [SerializeField] private bool isPoolable;
+    [SerializeField] private GameObject flametronGlove;
+
 
     //[SerializeField] private FirePoolingManager poolingManager;
 
@@ -23,6 +25,12 @@ public class CharacterSetupPhase : MonoBehaviour
     private void Awake()
     {
         AssignComponents();       
+    }
+
+    public void Start()
+    {
+        if(NewBehaviourScript.rF)
+            flametronGlove.SetActive(true);
     }
 
     private void AssignComponents()

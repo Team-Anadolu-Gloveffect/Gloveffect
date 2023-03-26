@@ -565,6 +565,7 @@ MonoBehaviour:
   movementSpeed: 5
   turnSpeed: 2
   isPoolable: 0
+  flametronGlove: {fileID: 1450460074}
 --- !u!143 &1151317987
 CharacterController:
   m_ObjectHideFlags: 0
@@ -1099,7 +1100,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &2095738626
 BoxCollider:
   m_ObjectHideFlags: 0
