@@ -13,10 +13,10 @@ GameObject:
   - component: {fileID: 2583272104459635477}
   - component: {fileID: 2201948941482158128}
   - component: {fileID: 4598739123808685331}
-  - component: {fileID: 6881191910436740387}
+  - component: {fileID: 3904157330546039587}
   m_Layer: 0
   m_Name: CryoniteSpell
-  m_TagString: Untagged
+  m_TagString: Cryonite
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -116,7 +116,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 1
---- !u!114 &6881191910436740387
+--- !u!114 &3904157330546039587
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -125,7 +125,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 4108959029531468941}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7f90cf4513727734783838f669fedb79, type: 3}
+  m_Script: {fileID: 11500000, guid: 094739164396a4c4f93fce97819f4756, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsCalledByPooling: 0
+  speed: 20
+  damage: 0

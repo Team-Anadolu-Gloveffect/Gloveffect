@@ -22,6 +22,6 @@ public class BulletController : MonoBehaviour
     private void Enqueue()
     {
         IsCalledByPooling = false;
-        FlametronPoolingManager.Instance.EnqueueBullet(gameObject);
+        ObjectPoolingManager.Instance.GetPooledObject(tag);
     }
 }

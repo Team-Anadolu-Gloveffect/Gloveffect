@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Pool;
 
 public class CharacterSetupPhase : MonoBehaviour
 {
@@ -14,6 +15,7 @@ public class CharacterSetupPhase : MonoBehaviour
     //[SerializeField] private Transform gunMuzzle;
     [SerializeField] private bool isPoolable;
     [SerializeField] private GameObject flametronGlove;
+    [SerializeField] private GameObject poolParent;
 
 
     //[SerializeField] private FirePoolingManager poolingManager;
@@ -43,6 +45,11 @@ public class CharacterSetupPhase : MonoBehaviour
     {
         _movementInputValues = GetMovementInputData();
         _rotationInputValues = GetRotationMovementData();
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            CastFireball();
+        }
     }
 
     private void FixedUpdate()
@@ -60,6 +67,23 @@ public class CharacterSetupPhase : MonoBehaviour
     private Vector2 GetRotationMovementData()
     {
         return new Vector2(Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Mouse Y"));
+    }
+
+    public float fireballSpeed;
+    public float fireballDamage;
+    public Transform fireballSpawnPoint;
+
+    public void CastFireball()
+    {
+        GameObject fireball = ObjectPoolingManager.Instance.GetPooledObject("Cryonite");
+        if (fireball != null)
+        {
+            fireball.transform.position = fireballSpawnPoint.position;
+            fireball.transform.rotation = fireballSpawnPoint.rotation;
+            fireballSpeed = fireball.GetComponent<Spell>().speed;
+            fireball.GetComponent<Spell>().damage = fireballDamage;
+            fireball.SetActive(true);
+        }
     }
 
     #region Movement

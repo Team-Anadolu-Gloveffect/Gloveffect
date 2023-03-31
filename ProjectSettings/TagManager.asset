@@ -12,6 +12,8 @@ TagManager:
   - LeftF
   - LeftL
   - LeftC
+  - Cryonite
+  - FlametronSpell
   layers:
   - Default
   - TransparentFX
