@@ -21,9 +21,8 @@ public class ObjectPoolingManager : MonoBehaviour
     }
 
     [SerializeField] private GameObject poolParent;
-
-    public List<Pool> pools;
-    public Dictionary<string, Queue<GameObject>> poolDictionary;
+    [SerializeField] private List<Pool> pools;
+    [SerializeField] private Dictionary<string, Queue<GameObject>> poolDictionary;
 
     void Start()
     {
@@ -39,8 +38,6 @@ public class ObjectPoolingManager : MonoBehaviour
 
             for (int i = 0; i < pool.size; i++)
             {
-                //var spell = Instantiate(pool.prefab, poolParent.transform, true);
-                //spell.SetActive(false);
                 GameObject spell = Instantiate(pool.prefab);
                 spell.SetActive(false);
                 objectPool.Enqueue(spell);

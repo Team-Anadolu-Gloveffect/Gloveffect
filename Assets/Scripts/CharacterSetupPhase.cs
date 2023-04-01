@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.Pool;
 
 public class CharacterSetupPhase : MonoBehaviour
 {
@@ -10,29 +9,12 @@ public class CharacterSetupPhase : MonoBehaviour
     [SerializeField] private CharacterController characterController;
     [SerializeField] private float movementSpeed = 2f;
     [SerializeField] private float turnSpeed = 2f;
-    //[SerializeField] private float bulletSpeed = 10;
-    //[SerializeField] private GameObject fireBulletPrefab, waterBulletPrefab;
-    //[SerializeField] private Transform gunMuzzle;
-    [SerializeField] private bool isPoolable;
-    [SerializeField] private GameObject flametronGlove;
-    [SerializeField] private GameObject poolParent;
-
-
-    //[SerializeField] private FirePoolingManager poolingManager;
 
     private Vector2 _movementInputValues, _rotationInputValues;
 
-    public static bool IsFire, IsWater;
-
     private void Awake()
     {
-        AssignComponents();       
-    }
-
-    public void Start()
-    {
-        if(NewBehaviourScript.rF)
-            flametronGlove.SetActive(true);
+        AssignComponents();
     }
 
     private void AssignComponents()
@@ -44,12 +26,7 @@ public class CharacterSetupPhase : MonoBehaviour
     private void Update()
     {
         _movementInputValues = GetMovementInputData();
-        _rotationInputValues = GetRotationMovementData();
-
-        if (Input.GetMouseButtonDown(0))
-        {
-            CastFireball();
-        }
+        _rotationInputValues = GetRotationMovementData();  
     }
 
     private void FixedUpdate()
@@ -68,25 +45,6 @@ public class CharacterSetupPhase : MonoBehaviour
     {
         return new Vector2(Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Mouse Y"));
     }
-
-    public float fireballSpeed;
-    public float fireballDamage;
-    public Transform fireballSpawnPoint;
-
-    public void CastFireball()
-    {
-        GameObject fireball = ObjectPoolingManager.Instance.GetPooledObject("Cryonite");
-        if (fireball != null)
-        {
-            fireball.transform.position = fireballSpawnPoint.position;
-            fireball.transform.rotation = fireballSpawnPoint.rotation;
-            fireballSpeed = fireball.GetComponent<Spell>().speed;
-            fireball.GetComponent<Spell>().damage = fireballDamage;
-            fireball.SetActive(true);
-        }
-    }
-
-    #region Movement
 
     private void Move()
     {
@@ -107,15 +65,5 @@ public class CharacterSetupPhase : MonoBehaviour
 
         Quaternion rotation = Quaternion.Euler(0f, targetAngle, 0f);
         transform.rotation = Quaternion.Lerp(transform.rotation, rotation, Time.deltaTime * turnSpeed);
-    }
-
-    #endregion
-
-    //private void FireBulletWithPooling()
-    //{
-    //    var bullet = FirePoolingManager.Instance.DequeuePoolableGameObject();
-    //    bullet.transform.position = gunMuzzle.position;
-    //    bullet.GetComponent<BulletController>().IsCalledByPooling = true;
-    //    bullet.GetComponent<Rigidbody>().AddForce(gunMuzzle.forward * bulletSpeed, ForceMode.Impulse);
-    //}
+    }  
 }

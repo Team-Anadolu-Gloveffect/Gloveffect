@@ -4,16 +4,9 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - FireGun
-  - WaterGun
-  - RightF
-  - RightL
-  - RightC
-  - LeftF
-  - LeftL
-  - LeftC
   - Cryonite
-  - FlametronSpell
+  - Lumisium
+  - Flametron
   layers:
   - Default
   - TransparentFX
