@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Spell : MonoBehaviour
 {
-    public float speed =10f;
-    public float damage;
+    public float SpellSpeed = 10f;
+    public float SpellDamage = 3f;
 
     private Rigidbody rb;
 
@@ -16,34 +16,27 @@ public class Spell : MonoBehaviour
 
     private void OnEnable()
     {
-        // Invoke the Disable() method after 5 seconds
-        Invoke(nameof(Disable), 5f);
+        Invoke(nameof(Disable), 7f);
     }
 
     private void Disable()
     {
-        // Deactivate the spell and return it to the object pool
         gameObject.SetActive(false);
     }
 
-    //private void OnCollisionEnter(Collision collision)
-    //{
-    //    // Check if the spell collides with an enemy
-    //    Enemy enemy = collision.gameObject.GetComponent<Enemy>();
-    //    if (enemy != null)
-    //    {
-    //        // Deal damage to the enemy
-    //        enemy.TakeDamage(damage);
-
-    //        // Deactivate the spell and return it to the object pool
-    //        gameObject.SetActive(false);
-    //    }
-    //}
+    private void OnCollisionEnter(Collision collision)
+    {
+        Enemy enemy = collision.gameObject.GetComponent<Enemy>();
+        if (enemy != null)
+        {    
+            enemy.TakeDamage(SpellDamage);
+            Disable();
+        }
+    }
 
     private void FixedUpdate()
     {
-        // Move the spell forward with a constant speed
-        rb.MovePosition(rb.position + transform.forward * (speed * Time.fixedDeltaTime));
+        rb.MovePosition(rb.position + transform.forward * (SpellSpeed * Time.fixedDeltaTime));
     }
 }
 

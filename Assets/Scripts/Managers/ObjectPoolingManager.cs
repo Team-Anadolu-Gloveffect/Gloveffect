@@ -20,7 +20,6 @@ public class ObjectPoolingManager : MonoBehaviour
         public int size;
     }
 
-    [SerializeField] private GameObject poolParent;
     [SerializeField] private List<Pool> pools;
     [SerializeField] private Dictionary<string, Queue<GameObject>> poolDictionary;
 
