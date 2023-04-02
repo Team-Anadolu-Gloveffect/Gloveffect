@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class CharacterSetupPhase : MonoBehaviour
+public class BasicPlayerMovement : MonoBehaviour
 {
     [SerializeField] private Collider playerCollider;
     [SerializeField] private CharacterController characterController;

@@ -384,7 +384,7 @@ MonoBehaviour:
     size: 5
   - tag: Lumisium
     prefab: {fileID: 1060120232212405123, guid: f7302e99a499b2f4c8958f73bf721a38, type: 3}
-    size: 0
+    size: 5
   poolParent: {fileID: 751403082}
 --- !u!1 &1030028872
 GameObject:
