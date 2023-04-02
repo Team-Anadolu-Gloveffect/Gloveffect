@@ -13,10 +13,10 @@ GameObject:
   - component: {fileID: 2743592428333919759}
   - component: {fileID: 1964825528731045162}
   - component: {fileID: 4186256742620571657}
-  - component: {fileID: 6535977706501896249}
+  - component: {fileID: 5864831211254428279}
   m_Layer: 0
   m_Name: FlametronSpell
-  m_TagString: Untagged
+  m_TagString: Flametron
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -116,7 +116,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 1
---- !u!114 &6535977706501896249
+--- !u!114 &5864831211254428279
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -125,7 +125,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 4381834187539087767}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7f90cf4513727734783838f669fedb79, type: 3}
+  m_Script: {fileID: 11500000, guid: 094739164396a4c4f93fce97819f4756, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsCalledByPooling: 0
+  SpellSpeed: 10
+  SpellDamage: 10
