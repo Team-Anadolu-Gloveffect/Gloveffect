@@ -380,11 +380,12 @@ MonoBehaviour:
     prefab: {fileID: 4108959029531468941, guid: 7ca645679d28b3349ad9a52ede690aa3, type: 3}
     size: 5
   - tag: Flametron
-    prefab: {fileID: 4381834187539087767, guid: a927456c774063342b794c01b37e712f, type: 3}
+    prefab: {fileID: 5214479098418807466, guid: d887b4a2cf64f6446b3dcbaddd2b064e, type: 3}
     size: 5
   - tag: Lumisium
     prefab: {fileID: 1060120232212405123, guid: f7302e99a499b2f4c8958f73bf721a38, type: 3}
     size: 0
+  poolParent: {fileID: 751403082}
 --- !u!1 &1030028872
 GameObject:
   m_ObjectHideFlags: 0

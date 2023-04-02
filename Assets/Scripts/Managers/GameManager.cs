@@ -12,13 +12,13 @@ public class GameManager : MonoBehaviour
     public void Update()
     {
         if (Input.GetMouseButtonDown(1))
-        {
             CastRightGloveSpell();
-        }
+
         if (Input.GetMouseButtonDown(0))
-        {
             CastLeftGloveSpell();
-        }
+
+        if (Input.GetKeyDown(KeyCode.Space))
+            CastForPlayTest();
     }
 
     public void CastRightGloveSpell()
@@ -46,5 +46,20 @@ public class GameManager : MonoBehaviour
             spellDamage = leftGloveSpell.GetComponent<Spell>().SpellDamage;
             leftGloveSpell.SetActive(true);
         }   
+    }
+
+    //This one is for play test.
+    public void CastForPlayTest()
+    {
+        GameObject leftGloveSpell = ObjectPoolingManager.Instance.GetPooledObject("Flametron");
+        if (leftGloveSpell != null)
+        {
+            leftGloveSpell.transform.parent = poolParent.transform;
+            leftGloveSpell.transform.position = leftGloveSpawnPoint.position;
+            leftGloveSpell.transform.rotation = leftGloveSpawnPoint.rotation;
+            spellSpeed = leftGloveSpell.GetComponent<Spell>().SpellSpeed;
+            spellDamage = leftGloveSpell.GetComponent<Spell>().SpellDamage;
+            leftGloveSpell.SetActive(true);
+        }
     }
 }

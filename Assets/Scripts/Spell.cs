@@ -33,7 +33,6 @@ public class Spell : MonoBehaviour
             Disable();
         }
     }
-
     private void FixedUpdate()
     {
         rb.MovePosition(rb.position + transform.forward * (SpellSpeed * Time.fixedDeltaTime));
