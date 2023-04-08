@@ -51,7 +51,7 @@ public class GameManager : MonoBehaviour
     //This one is for play test.
     public void CastForPlayTest()
     {
-        GameObject leftGloveSpell = ObjectPoolingManager.Instance.GetPooledObject("Flametron");
+        GameObject leftGloveSpell = ObjectPoolingManager.Instance.GetPooledObject("Ignisis");
         if (leftGloveSpell != null)
         {
             leftGloveSpell.transform.parent = poolParent.transform;

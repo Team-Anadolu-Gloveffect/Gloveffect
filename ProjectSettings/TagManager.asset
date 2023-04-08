@@ -8,6 +8,8 @@ TagManager:
   - Lumisium
   - Flametron
   - Enemy
+  - DarkMagic
+  - Ignisis
   layers:
   - Default
   - TransparentFX
