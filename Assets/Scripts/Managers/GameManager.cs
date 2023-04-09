@@ -18,7 +18,7 @@ public class GameManager : MonoBehaviour
             CastLeftGloveSpell();
 
         if (Input.GetKeyDown(KeyCode.Space))
-            CastForPlayTest();
+            CastForPlayTest();           
     }
 
     public void CastRightGloveSpell()
@@ -51,7 +51,7 @@ public class GameManager : MonoBehaviour
     //This one is for play test.
     public void CastForPlayTest()
     {
-        GameObject leftGloveSpell = ObjectPoolingManager.Instance.GetPooledObject("Ignisis");
+        GameObject leftGloveSpell = ObjectPoolingManager.Instance.GetPooledObject("DarkMagic");
         if (leftGloveSpell != null)
         {
             leftGloveSpell.transform.parent = poolParent.transform;

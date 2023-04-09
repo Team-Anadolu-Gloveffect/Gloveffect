@@ -141,7 +141,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &117605468
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -390,6 +390,21 @@ MonoBehaviour:
     size: 5
   - tag: Ignisis
     prefab: {fileID: 1530528817569953064, guid: f03cb6c6428cc354b8e008977a9839d4, type: 3}
+    size: 5
+  - tag: DarkMagicExplosion
+    prefab: {fileID: 6256785834239627420, guid: d7da0a68b71db924da594ffe70980246, type: 3}
+    size: 5
+  - tag: FlametronExplosion
+    prefab: {fileID: 5485461705283024682, guid: c0c8fa3b1700ca84c91d3662973b4931, type: 3}
+    size: 5
+  - tag: CryoniteExplosion
+    prefab: {fileID: 2653515041367310360, guid: 72bce4754a6d5464eacfe0b5211f9365, type: 3}
+    size: 5
+  - tag: LumisiumExplosion
+    prefab: {fileID: 3103107385377815081, guid: 0b371c9078ffdf54bb1f33ee5125649a, type: 3}
+    size: 5
+  - tag: IgnisisExplosion
+    prefab: {fileID: 7021899853728012576, guid: 4f48cda7ad4084740a66c298fc7a8e4b, type: 3}
     size: 5
   poolParent: {fileID: 751403082}
 --- !u!1 &1030028872
@@ -951,7 +966,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &1450460075
 BoxCollider:
   m_ObjectHideFlags: 0

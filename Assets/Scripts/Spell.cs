@@ -26,9 +26,19 @@ public class Spell : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        if (collision.collider != null)
+        {
+            GameObject explosion = ObjectPoolingManager.Instance.GetPooledObject(gameObject.tag +"Explosion");
+            if (explosion != null)
+            {
+                explosion.transform.position = collision.collider.transform.position;
+                explosion.SetActive(true);
+            }           
+        }
+        
         Enemy enemy = collision.gameObject.GetComponent<Enemy>();
         if (enemy != null)
-        {    
+        {
             enemy.TakeDamage(SpellDamage);
             Disable();
         }
