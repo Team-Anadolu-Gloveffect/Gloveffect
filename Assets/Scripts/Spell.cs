@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Pool;
 
 public class Spell : MonoBehaviour
 {
@@ -31,7 +32,10 @@ public class Spell : MonoBehaviour
             GameObject explosion = ObjectPoolingManager.Instance.GetPooledObject(gameObject.tag +"Explosion");
             if (explosion != null)
             {
-                explosion.transform.position = collision.collider.transform.position;
+                explosion.transform.position = collision.contacts[0].point;
+                //Vector3 normal = collision.contacts[0].normal;
+                //Quaternion rotation = Quaternion.FromToRotation(Vector3.up, normal);
+                //explosion.transform.rotation = rotation;
                 explosion.SetActive(true);
             }           
         }
