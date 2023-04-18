@@ -9,6 +9,6 @@ EditorBuildSettings:
     path: Assets/Scenes/Menu.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   - enabled: 1
-    path: Assets/Scenes/Ahmet Emir.unity
-    guid: e6275b0ad8c0bf6409a6286fe3a7488f
+    path: "Assets/Scenes/Say\u0131n Emir.unity"
+    guid: dd0e7e5ec47c566439b2de8f2416ed84
   m_configObjects: {}

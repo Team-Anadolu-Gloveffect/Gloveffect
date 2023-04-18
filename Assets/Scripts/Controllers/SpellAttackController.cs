@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameManager : MonoBehaviour
+public class SpellAttackController : MonoBehaviour
 {        
     [SerializeField] private GameObject poolParent;
     [SerializeField] private Transform rightGloveSpawnPoint, leftGloveSpawnPoint;
@@ -17,8 +17,8 @@ public class GameManager : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
             CastLeftGloveSpell();
 
-        if (Input.GetKeyDown(KeyCode.Space))
-            CastForPlayTest();           
+        //if (Input.GetKeyDown(KeyCode.Space))
+        //    CastForPlayTest();
     }
 
     public void CastRightGloveSpell()
@@ -49,17 +49,17 @@ public class GameManager : MonoBehaviour
     }
 
     //This one is for play test.
-    public void CastForPlayTest()
-    {
-        GameObject leftGloveSpell = ObjectPoolingManager.Instance.GetPooledObject("DarkMagic");
-        if (leftGloveSpell != null)
-        {
-            leftGloveSpell.transform.parent = poolParent.transform;
-            leftGloveSpell.transform.position = leftGloveSpawnPoint.position;
-            leftGloveSpell.transform.rotation = leftGloveSpawnPoint.rotation;
-            spellSpeed = leftGloveSpell.GetComponent<Spell>().SpellSpeed;
-            spellDamage = leftGloveSpell.GetComponent<Spell>().SpellDamage;
-            leftGloveSpell.SetActive(true);
-        }
-    }
+    //public void CastForPlayTest()
+    //{
+    //    GameObject leftGloveSpell = ObjectPoolingManager.Instance.GetPooledObject("DarkMagic");
+    //    if (leftGloveSpell != null)
+    //    {
+    //        leftGloveSpell.transform.parent = poolParent.transform;
+    //        leftGloveSpell.transform.position = leftGloveSpawnPoint.position;
+    //        leftGloveSpell.transform.rotation = leftGloveSpawnPoint.rotation;
+    //        spellSpeed = leftGloveSpell.GetComponent<Spell>().SpellSpeed;
+    //        spellDamage = leftGloveSpell.GetComponent<Spell>().SpellDamage;
+    //        leftGloveSpell.SetActive(true);
+    //    }
+    //}
 }
