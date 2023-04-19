@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class SpellAttackController : MonoBehaviour
 {        
@@ -23,12 +24,13 @@ public class SpellAttackController : MonoBehaviour
 
     public void CastRightGloveSpell()
     {
-        GameObject rightGloveSpell = ObjectPoolingManager.Instance.GetPooledObject(TagManager.rightGloveTag);
+        GameObject rightGloveSpell = ObjectPoolingManager.Instance.GetPooledObject("Cryonite");
         if (rightGloveSpell != null)
         {
             rightGloveSpell.transform.parent = poolParent.transform;
             rightGloveSpell.transform.position = rightGloveSpawnPoint.position;
             rightGloveSpell.transform.rotation = rightGloveSpawnPoint.rotation;
+            rightGloveSpell.GetComponent<Spell>().direction = transform.forward;
             spellSpeed = rightGloveSpell.GetComponent<Spell>().SpellSpeed;
             spellDamage = rightGloveSpell.GetComponent<Spell>().SpellDamage;
             rightGloveSpell.SetActive(true);
@@ -36,12 +38,13 @@ public class SpellAttackController : MonoBehaviour
     }
     public void CastLeftGloveSpell()
     {
-        GameObject leftGloveSpell = ObjectPoolingManager.Instance.GetPooledObject(TagManager.leftGloveTag);
+        GameObject leftGloveSpell = ObjectPoolingManager.Instance.GetPooledObject("Flametron");
         if (leftGloveSpell != null)
         {
             leftGloveSpell.transform.parent = poolParent.transform;
             leftGloveSpell.transform.position = leftGloveSpawnPoint.position;
             leftGloveSpell.transform.rotation = leftGloveSpawnPoint.rotation;
+            leftGloveSpell.GetComponent<Spell>().direction = transform.forward;
             spellSpeed = leftGloveSpell.GetComponent<Spell>().SpellSpeed;
             spellDamage = leftGloveSpell.GetComponent<Spell>().SpellDamage;
             leftGloveSpell.SetActive(true);

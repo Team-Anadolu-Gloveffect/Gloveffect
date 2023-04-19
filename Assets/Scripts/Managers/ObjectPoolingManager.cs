@@ -39,7 +39,6 @@ public class ObjectPoolingManager : MonoBehaviour
             for (int i = 0; i < pool.size; i++)
             {
                 var spell = Instantiate(pool.prefab, poolParent.transform, true);
-                //GameObject spell = Instantiate(pool.prefab);
                 spell.SetActive(false);
                 objectPool.Enqueue(spell);
             }
@@ -80,6 +79,7 @@ public class ObjectPoolingManager : MonoBehaviour
             return;
         }
 
+        objectToReturn.GetComponent<Spell>().direction = Vector3.zero;
         objectToReturn.SetActive(false);
         poolDictionary[tag].Enqueue(objectToReturn);
     }

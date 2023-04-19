@@ -8,16 +8,21 @@ public class Spell : MonoBehaviour
     public float SpellSpeed = 10f;
     public float SpellDamage = 3f;
 
-    private Rigidbody rb;
+    //private Rigidbody rb;
+    public Vector3 direction = Vector3.zero;
 
+    private void Start()
+    {
+        direction = transform.forward;
+    }
     private void Awake()
     {
-        rb = GetComponent<Rigidbody>();
+        //rb = GetComponent<Rigidbody>();        
     }
 
     private void OnEnable()
-    {
-        Invoke(nameof(Disable), 7f);
+    {      
+        Invoke(nameof(Disable), 5f);
     }
 
     private void Disable()
@@ -33,9 +38,6 @@ public class Spell : MonoBehaviour
             if (explosion != null)
             {
                 explosion.transform.position = collision.contacts[0].point;
-                //Vector3 normal = collision.contacts[0].normal;
-                //Quaternion rotation = Quaternion.FromToRotation(Vector3.up, normal);
-                //explosion.transform.rotation = rotation;
                 explosion.SetActive(true);
             }           
         }
@@ -49,7 +51,8 @@ public class Spell : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        rb.MovePosition(rb.position + transform.forward * (SpellSpeed * Time.fixedDeltaTime));
+        transform.position += direction * SpellSpeed * Time.fixedDeltaTime;
+        //rb.MovePosition(rb.position + transform.forward * (SpellSpeed * Time.fixedDeltaTime));
     }
 }
 
