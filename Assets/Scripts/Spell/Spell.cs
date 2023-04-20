@@ -8,18 +8,12 @@ public class Spell : MonoBehaviour
     public float SpellSpeed = 10f;
     public float SpellDamage = 3f;
 
-    //private Rigidbody rb;
     public Vector3 direction = Vector3.zero;
 
     private void Start()
     {
         direction = transform.forward;
     }
-    private void Awake()
-    {
-        //rb = GetComponent<Rigidbody>();        
-    }
-
     private void OnEnable()
     {      
         Invoke(nameof(Disable), 5f);
@@ -52,7 +46,6 @@ public class Spell : MonoBehaviour
     private void FixedUpdate()
     {
         transform.position += direction * SpellSpeed * Time.fixedDeltaTime;
-        //rb.MovePosition(rb.position + transform.forward * (SpellSpeed * Time.fixedDeltaTime));
     }
 }
 

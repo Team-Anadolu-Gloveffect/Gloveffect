@@ -24,7 +24,7 @@ public class SpellAttackController : MonoBehaviour
 
     public void CastRightGloveSpell()
     {
-        GameObject rightGloveSpell = ObjectPoolingManager.Instance.GetPooledObject("Cryonite");
+        GameObject rightGloveSpell = ObjectPoolingManager.Instance.GetPooledObject(TagManager.rightGloveTag);
         if (rightGloveSpell != null)
         {
             rightGloveSpell.transform.parent = poolParent.transform;
@@ -38,7 +38,7 @@ public class SpellAttackController : MonoBehaviour
     }
     public void CastLeftGloveSpell()
     {
-        GameObject leftGloveSpell = ObjectPoolingManager.Instance.GetPooledObject("Flametron");
+        GameObject leftGloveSpell = ObjectPoolingManager.Instance.GetPooledObject(TagManager.leftGloveTag);
         if (leftGloveSpell != null)
         {
             leftGloveSpell.transform.parent = poolParent.transform;

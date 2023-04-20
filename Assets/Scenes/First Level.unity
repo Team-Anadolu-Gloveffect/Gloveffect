@@ -23889,34 +23889,34 @@ MonoBehaviour:
   pools:
   - tag: Cryonite
     prefab: {fileID: 4356490109446841369, guid: b1c0dbcb6235d1e459d329e20cc9e246, type: 3}
-    size: 5
+    size: 10
   - tag: Flametron
     prefab: {fileID: 8373513629352249247, guid: d887b4a2cf64f6446b3dcbaddd2b064e, type: 3}
-    size: 5
+    size: 10
   - tag: Lumisium
     prefab: {fileID: 6074095073547263480, guid: a13f913a670b7f744800ee9df569e31b, type: 3}
-    size: 20
+    size: 10
   - tag: DarkMagic
     prefab: {fileID: 3143058102563542917, guid: a2a991b8b6b5b894093bfd781b1abbc5, type: 3}
-    size: 5
+    size: 10
   - tag: Ignisis
     prefab: {fileID: 1530528817569953064, guid: f03cb6c6428cc354b8e008977a9839d4, type: 3}
-    size: 5
+    size: 10
   - tag: DarkMagicExplosion
     prefab: {fileID: 6256785834239627420, guid: d7da0a68b71db924da594ffe70980246, type: 3}
-    size: 5
+    size: 10
   - tag: FlametronExplosion
     prefab: {fileID: 5485461705283024682, guid: c0c8fa3b1700ca84c91d3662973b4931, type: 3}
-    size: 5
+    size: 10
   - tag: CryoniteExplosion
     prefab: {fileID: 2653515041367310360, guid: 72bce4754a6d5464eacfe0b5211f9365, type: 3}
-    size: 5
+    size: 10
   - tag: LumisiumExplosion
     prefab: {fileID: 3103107385377815081, guid: 0b371c9078ffdf54bb1f33ee5125649a, type: 3}
-    size: 5
+    size: 10
   - tag: IgnisisExplosion
     prefab: {fileID: 7021899853728012576, guid: 4f48cda7ad4084740a66c298fc7a8e4b, type: 3}
-    size: 5
+    size: 10
   poolParent: {fileID: 965157295}
 --- !u!4 &1803847706
 Transform:
