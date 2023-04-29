@@ -29,7 +29,7 @@ public class PlayerController : MonoBehaviour
             if (hit.collider.tag == "Enemy")
             {
                 Debug.Log("There is an enemy");
-                hit.collider.GetComponent<Enemy>().TakeDamage(meleeAttackDamage);
+                hit.collider.GetComponent<EnemyAI>().TakeDamage(meleeAttackDamage);
                 animator.SetTrigger("MeleeAttack");
             }
         }

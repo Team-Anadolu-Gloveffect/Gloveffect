@@ -15,6 +15,7 @@ TagManager:
   - FlametronExplosion
   - LumisiumExplosion
   - IgnisisExplosion
+  - Obstacles
   layers:
   - Default
   - TransparentFX
@@ -24,7 +25,7 @@ TagManager:
   - UI
   - Wall
   - Ground
-  - 
+  - Player
   - 
   - 
   - 

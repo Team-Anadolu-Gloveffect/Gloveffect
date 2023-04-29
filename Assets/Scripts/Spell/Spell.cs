@@ -36,7 +36,7 @@ public class Spell : MonoBehaviour
             }           
         }
         
-        Enemy enemy = collision.gameObject.GetComponent<Enemy>();
+        EnemyAI enemy = collision.gameObject.GetComponent<EnemyAI>();
         if (enemy != null)
         {
             enemy.TakeDamage(SpellDamage);
