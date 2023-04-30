@@ -6,10 +6,11 @@ public class TimeManager : MonoBehaviour
 {
     bool IsSlowMotion = false;
     float m_SlowMotionFactor = 0.5f;
+    public bool activateSlowMotion = false;
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Mouse2))
+        if (Input.GetKeyDown(KeyCode.Mouse2) && activateSlowMotion)
         {
             if (!IsSlowMotion)
             {

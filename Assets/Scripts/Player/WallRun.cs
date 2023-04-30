@@ -27,10 +27,11 @@ namespace Player
 
         float m_VerticalInput;
         bool isJumping;
-        bool isWallRunning;
+        public bool isWallRunning = false;
         float m_ElapsedTimeSinceJump = 0;
         float m_ElapsedTimeSinceWallAttach = 0;
         float m_ElapsedTimeSinceWallDetach = 0;
+        public bool activateWallrun = false;
         
         void Start()
         {
@@ -66,7 +67,7 @@ namespace Player
                     Physics.Raycast(transform.position, dir, out m_Hits[i], maxWallDistance);
                 }
 
-                if (CanWallRun())
+                if (CanWallRun() && activateWallrun)
                 {
                     var hitQuery =
                         (from h in m_Hits

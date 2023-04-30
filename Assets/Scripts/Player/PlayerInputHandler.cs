@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace Player
@@ -6,12 +7,30 @@ namespace Player
     {
         public float LookSensitivity = 1f;
         PlayerCharacterController m_PlayerCharacterController;
+        public GameObject skillTreeUI;
+        public bool activateSprint = false;
+        public bool activateSlide = false;
 
         void Start()
         {
             m_PlayerCharacterController = GetComponent<PlayerCharacterController>();
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
+        }
+
+        private void Update()
+        {
+            if (skillTreeUI.activeSelf)
+            {
+                Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
+            }
+            
+            else if (!skillTreeUI.activeSelf)
+            {
+                Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = false;
+            }
         }
 
         public bool CanProcessInput()
@@ -56,7 +75,7 @@ namespace Player
 
         public bool GetSprintInputHeld()
         {
-            if (CanProcessInput())
+            if (CanProcessInput() && activateSprint)
             {
                 return Input.GetButton(Game.GameConstants.k_ButtonNameSprint);
             }
@@ -86,7 +105,7 @@ namespace Player
         
         public bool GetSlideInputDown()
         {
-            if (CanProcessInput())
+            if (CanProcessInput() && activateSlide)
             {
                 return Input.GetButtonDown(Game.GameConstants.k_ButtonNameSlide);
             }

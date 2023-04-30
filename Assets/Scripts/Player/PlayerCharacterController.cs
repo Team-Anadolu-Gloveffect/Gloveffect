@@ -52,7 +52,7 @@ namespace Player
         Vector3 m_CharacterVelocity;
         Vector3 m_LatestImpactSpeed;
         float m_LastTimeJumped = 0f;
-        public bool m_HasDoubleJumped = false;
+        public bool m_HasDoubleJumped = true;
         float m_CameraVerticalAngle = 0f;
         float m_TargetCharacterHeight;
         
@@ -60,6 +60,7 @@ namespace Player
         const float k_GroundCheckDistanceInAir = 0.07f;
         
         private bool m_IsSliding = false;
+        public bool activateDoubleJump = false;
 
         void Start()
         {
@@ -119,7 +120,7 @@ namespace Player
                     }
                 }
             }
-            if (IsGrounded)
+            if (IsGrounded && activateDoubleJump)
             {
                 m_HasDoubleJumped = false;
             }
@@ -181,7 +182,6 @@ namespace Player
                         }
                         else
                         {
-                            Debug.Log("sd");
                             CharacterVelocity = new Vector3(CharacterVelocity.x, 0f, CharacterVelocity.z);
                             CharacterVelocity += m_WallRunComponent.GetWallJumpDirection() * JumpForce;
                         }
