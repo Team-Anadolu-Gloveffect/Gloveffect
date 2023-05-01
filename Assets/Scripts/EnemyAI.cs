@@ -4,79 +4,98 @@ using UnityEngine.AI;
 public class EnemyAI : MonoBehaviour
 {
     #region SerializeField Variables
-    [SerializeField] private NavMeshAgent enemy;
-    [SerializeField] private Transform player;
-    [SerializeField] private LayerMask whatIsGround, whatIsPlayer;
-    [SerializeField] private Vector3 walkPoint;
+    [SerializeField] private NavMeshAgent _enemy;
+    [SerializeField] private Transform _player;
+    [SerializeField] private LayerMask _whatIsGround, _whatIsPlayer;
+    [SerializeField] private Vector3 _walkPoint;
     [SerializeField] private float _enemyHealth;
     [SerializeField] private float _walkPointRange;
     [SerializeField] private float _timeBetweenAttacks;
     [SerializeField] private float _sightRange, _attackRange;      
-    [SerializeField] private bool playerInSightRange, playerInAttackRange;
-    [SerializeField] private GameObject projectile;
+    [SerializeField] private bool _playerInSightRange, _playerInAttackRange;
+    [SerializeField] private Transform _enemySpellSpawnPoint;
     #endregion
 
     bool alreadyAttacked;
-    private bool walkPointSet;
+    private bool _walkPointSet;
+    private string _enemyTag;
+    private float _enemySpellSpeed;
+    private float _enemySpellDamage;
+
+    private void Start()
+    {
+        _enemyTag = gameObject.tag;
+        Debug.Log(_enemyTag);
+    }
 
     private void Awake()
     {
-        player = GameObject.FindGameObjectWithTag("Player").transform;
-        enemy = GetComponent<NavMeshAgent>();
+        _player = GameObject.FindGameObjectWithTag("Player").transform;
+        _enemy = GetComponent<NavMeshAgent>();
     }
 
     private void Update()
     {
-        playerInSightRange = Physics.CheckSphere(transform.position, _sightRange, whatIsPlayer);
-        playerInAttackRange = Physics.CheckSphere(transform.position, _attackRange, whatIsPlayer);
+        _playerInSightRange = Physics.CheckSphere(transform.position, _sightRange, _whatIsPlayer);
+        _playerInAttackRange = Physics.CheckSphere(transform.position, _attackRange, _whatIsPlayer);
 
-        if (!playerInSightRange && !playerInAttackRange) Patroling();
-        if (playerInSightRange && !playerInAttackRange) ChasePlayer();
-        if (playerInAttackRange && playerInSightRange) AttackPlayer();
+        if (!_playerInSightRange && !_playerInAttackRange) Patroling();
+        if (_playerInSightRange && !_playerInAttackRange) ChasePlayer();
+        if (_playerInAttackRange && _playerInSightRange) AttackPlayer();
     }
 
     private void Patroling()
     {
-        if (!walkPointSet) SearchWalkPoint();
+        if (!_walkPointSet) SearchWalkPoint();
 
-        if (walkPointSet)
-            enemy.SetDestination(walkPoint);
+        if (_walkPointSet)
+            _enemy.SetDestination(_walkPoint);
 
-        Vector3 distanceToWalkPoint = transform.position - walkPoint;
+        Vector3 distanceToWalkPoint = transform.position - _walkPoint;
 
         if (distanceToWalkPoint.magnitude < 1f)
-            walkPointSet = false;
+            _walkPointSet = false;
     }
     private void SearchWalkPoint()
     {
         float randomZ = Random.Range(-_walkPointRange, _walkPointRange);
         float randomX = Random.Range(-_walkPointRange, _walkPointRange);
 
-        walkPoint = new Vector3(transform.position.x + randomX, transform.position.y, transform.position.z + randomZ);
+        _walkPoint = new Vector3(transform.position.x + randomX, transform.position.y, transform.position.z + randomZ);
 
-        if (Physics.Raycast(walkPoint, -transform.up, 2f, whatIsGround))
-            walkPointSet = true;
+        if (Physics.Raycast(_walkPoint, -transform.up, 2f, _whatIsGround))
+            _walkPointSet = true;
     }
 
     private void ChasePlayer()
     {
-        enemy.SetDestination(player.position);
+        _enemy.SetDestination(_player.position);
     }
 
     private void AttackPlayer()
     {
-        enemy.SetDestination(transform.position);
+        _enemy.SetDestination(transform.position);
 
-        transform.LookAt(player);
+        transform.LookAt(_player);
 
         if (!alreadyAttacked)
         {
-            Rigidbody rb = Instantiate(projectile, transform.position, Quaternion.identity).GetComponent<Rigidbody>();
-            rb.AddForce(transform.forward * 32f, ForceMode.Impulse);
-            rb.AddForce(transform.up * 8f, ForceMode.Impulse);
-
+            EnemyAttack();
             alreadyAttacked = true;
             Invoke(nameof(ResetAttack), _timeBetweenAttacks);
+        }
+    }
+    private void EnemyAttack()
+    {
+        GameObject enemySpell = ObjectPoolingManager.Instance.GetPooledObject(_enemyTag);
+        if (enemySpell != null)
+        {           
+            enemySpell.transform.position = _enemySpellSpawnPoint.position;
+            enemySpell.transform.rotation = _enemySpellSpawnPoint.rotation;
+            enemySpell.GetComponent<Spell>().direction = transform.forward;
+            _enemySpellSpeed = enemySpell.GetComponent<Spell>().SpellSpeed;
+            _enemySpellDamage = enemySpell.GetComponent<Spell>().SpellDamage;
+            enemySpell.SetActive(true);
         }
     }
     private void ResetAttack()
