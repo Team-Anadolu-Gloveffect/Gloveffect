@@ -5,6 +5,6 @@ namespace Enums
         Flametron,
         Lumisium,
         Ignisis,
-        Cryonite,
+        Cryonite
     }
 }

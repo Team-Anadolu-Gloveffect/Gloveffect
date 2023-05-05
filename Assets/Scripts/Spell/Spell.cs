@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+using Enums;
 using UnityEngine;
 using UnityEngine.Pool;
 
@@ -7,6 +6,7 @@ public class Spell : MonoBehaviour
 {
     public float SpellSpeed = 10f;
     public float SpellDamage = 3f;
+    public SpellTypes spellType;
 
     public Vector3 direction = Vector3.zero;
 
@@ -16,7 +16,7 @@ public class Spell : MonoBehaviour
     }
     private void OnEnable()
     {      
-        Invoke(nameof(Disable), 5f);
+        Invoke(nameof(Disable), 3f);
     }
 
     private void Disable()
@@ -39,7 +39,8 @@ public class Spell : MonoBehaviour
         EnemyAI enemy = collision.gameObject.GetComponent<EnemyAI>();
         if (enemy != null)
         {
-            enemy.TakeDamage(SpellDamage);
+            int damage = ElementalReaction.ElementTable[spellType][enemy.enemyType];
+            enemy.TakeDamage(damage);
             Disable();
         }
     }

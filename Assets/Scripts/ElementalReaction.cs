@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 public static class ElementalReaction
 {
-    public static Dictionary<SpellTypes, Dictionary<SpellTypes, int>> table = new Dictionary<SpellTypes, Dictionary<SpellTypes, int>>()
+    public static Dictionary<SpellTypes, Dictionary<SpellTypes, int>> ElementTable = new Dictionary<SpellTypes, Dictionary<SpellTypes, int>>()
     {
         { SpellTypes.Flametron, new Dictionary<SpellTypes, int>() { { SpellTypes.Cryonite, 3 }, { SpellTypes.Lumisium, 1 }, { SpellTypes.Flametron, 2 }, { SpellTypes.Ignisis, 2 } } },
         { SpellTypes.Lumisium, new Dictionary<SpellTypes, int>() { { SpellTypes.Flametron, 3 }, { SpellTypes.Ignisis, 1 }, { SpellTypes.Lumisium, 2 }, { SpellTypes.Cryonite, 2 } } },

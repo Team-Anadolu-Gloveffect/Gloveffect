@@ -4763,6 +4763,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SpellSpeed: 10
   SpellDamage: 3
+  spellType: 1
+  direction: {x: 0, y: 0, z: 0}
 --- !u!54 &-2953029064429578180
 Rigidbody:
   m_ObjectHideFlags: 0

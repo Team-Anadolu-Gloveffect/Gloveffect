@@ -5,22 +5,22 @@ using Enums;
 public class SpellSelectionButtonController : MonoBehaviour
 {
     [SerializeField] private Gloves hand; 
-    private Button button;
+    private Button _button;
 
     void Awake()
     {
-        button = GetComponent<Button>();
+        _button = GetComponent<Button>();
     }
 
     public void ClickedButton()
     {
         if (hand == Gloves.Left)
         {
-            TagManager.ChangeLeftGloveTag(button.tag);
+            TagManager.ChangeLeftGloveTag(_button.tag);
         }
         else if (hand == Gloves.Right)
         {
-            TagManager.ChangeRightGloveTag(button.tag);
+            TagManager.ChangeRightGloveTag(_button.tag);
         }
     }
 
@@ -36,12 +36,12 @@ public class SpellSelectionButtonController : MonoBehaviour
 
     private void SubscribeEvents()
     {
-        button.onClick.AddListener(ClickedButton);
+        _button.onClick.AddListener(ClickedButton);
     }
 
     private void UnsubscribeEvents()
     {
-        button.onClick.RemoveListener(ClickedButton);
+        _button.onClick.RemoveListener(ClickedButton);
     }
 
 }
