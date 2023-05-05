@@ -49,16 +49,9 @@ public class ObjectPoolingManager : MonoBehaviour
 
     public GameObject GetPooledObject(string tag)
     {
-        if (!poolDictionary.ContainsKey(tag))
-        {
-            Debug.LogWarning("Pool with tag " + tag + " doesn't exist.");
-            return null;
-        }
-
         GameObject objectToSpawn = poolDictionary[tag].Dequeue();
-
         objectToSpawn.SetActive(true);
-
+        
         IPooledObject pooledObject = objectToSpawn.GetComponent<IPooledObject>();
 
         if (pooledObject != null)
@@ -73,14 +66,21 @@ public class ObjectPoolingManager : MonoBehaviour
 
     public void ReturnToPool(string tag, GameObject objectToReturn)
     {
-        if (!poolDictionary.ContainsKey(tag))
-        {
-            Debug.LogWarning("Pool with tag " + tag + " doesn't exist.");
-            return;
-        }
-
-        objectToReturn.GetComponent<Spell>().direction = Vector3.zero;
+        //objectToReturn.GetComponent<Spell>().direction = Vector3.zero;
         objectToReturn.SetActive(false);
         poolDictionary[tag].Enqueue(objectToReturn);
+    }
+    public bool IsPoolAllActive(string tag)
+    {
+        Queue<GameObject> pool = poolDictionary[tag];
+        foreach (GameObject obj in pool)
+        {
+            if (obj == null || !obj.activeInHierarchy)
+            {
+                Debug.Log("asdjasd");
+                return false;
+            }
+        }
+        return true;
     }
 }

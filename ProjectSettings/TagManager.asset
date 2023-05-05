@@ -16,6 +16,7 @@ TagManager:
   - LumisiumExplosion
   - IgnisisExplosion
   - Obstacles
+  - FlametronEnemy
   layers:
   - Default
   - TransparentFX

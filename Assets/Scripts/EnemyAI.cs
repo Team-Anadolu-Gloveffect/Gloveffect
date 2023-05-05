@@ -21,14 +21,13 @@ public class EnemyAI : MonoBehaviour
     private bool _walkPointSet;
     private string _enemyTag;
     private float _enemySpellSpeed;
-    private float _enemySpellDamage;
 
     public SpellTypes enemyType;
 
     private void Start()
     {
         _enemyTag = gameObject.tag;
-        Debug.Log(_enemyTag);
+        //Debug.Log(_enemyTag);
     }
 
     private void Awake()
@@ -90,14 +89,13 @@ public class EnemyAI : MonoBehaviour
     }
     private void EnemyAttack()
     {
-        GameObject enemySpell = ObjectPoolingManager.Instance.GetPooledObject(_enemyTag);
+        GameObject enemySpell = ObjectPoolingManager.Instance.GetPooledObject("Flametron");
         if (enemySpell != null)
         {           
             enemySpell.transform.position = enemySpellSpawnPoint.position;
             enemySpell.transform.rotation = enemySpellSpawnPoint.rotation;
             enemySpell.GetComponent<Spell>().direction = transform.forward;
             _enemySpellSpeed = enemySpell.GetComponent<Spell>().SpellSpeed;
-            _enemySpellDamage = enemySpell.GetComponent<Spell>().SpellDamage;
             enemySpell.SetActive(true);
         }
     }
@@ -110,10 +108,15 @@ public class EnemyAI : MonoBehaviour
     {
         enemyHealth -= damage;
 
-        if (enemyHealth <= 0) Invoke(nameof(DestroyEnemy), 0f);
+        if (enemyHealth <= 0)
+        {
+            Invoke(nameof(ReturnPool), 0f);
+        }
     }
-    private void DestroyEnemy()
+    private void ReturnPool()
     {
-        Destroy(gameObject);
+        string enemyTag = gameObject.tag;
+        GameObject enemyToReturn = gameObject;
+        ObjectPoolingManager.Instance.ReturnToPool(enemyTag,enemyToReturn);
     }
 }

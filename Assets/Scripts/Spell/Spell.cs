@@ -1,11 +1,9 @@
 using Enums;
 using UnityEngine;
-using UnityEngine.Pool;
 
 public class Spell : MonoBehaviour
 {
     public float SpellSpeed = 10f;
-    public float SpellDamage = 3f;
     public SpellTypes spellType;
 
     public Vector3 direction = Vector3.zero;
@@ -21,7 +19,9 @@ public class Spell : MonoBehaviour
 
     private void Disable()
     {
-        gameObject.SetActive(false);
+        string spellTag = gameObject.tag;
+        GameObject spellToReturn = gameObject;
+        ObjectPoolingManager.Instance.ReturnToPool(spellTag,spellToReturn);
     }
 
     private void OnCollisionEnter(Collision collision)
