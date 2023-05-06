@@ -37,7 +37,7 @@ namespace Player
         public float CapsuleHeightStanding = 1.8f;
         public float CapsuleHeightCrouching = 0.9f;
         public float CrouchingSharpness = 10f;
-        
+
         public UnityAction<bool> OnStanceChanged;
         
         public Vector3 CharacterVelocity { get; set; }

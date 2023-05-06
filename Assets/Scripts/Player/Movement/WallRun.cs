@@ -124,13 +124,16 @@ namespace Player
 
         void OnWall(RaycastHit hit)
         {
-            float a = Vector3.Dot(hit.normal, Vector3.up);
-            if (a >=- angleThreshold && a <= angleThreshold)
+            if(hit.collider.CompareTag("Wall"))
             {
-                isWallRunning = true;
-                Vector3 alongWall = transform.TransformDirection(Vector3.forward);
-                m_Controller.CharacterVelocity = alongWall * m_VerticalInput * wallSpeedMultiplier;
-                m_Controller.CharacterVelocity += Vector3.down * wallGravityDown * Time.deltaTime;
+                float a = Vector3.Dot(hit.normal, Vector3.up);
+                if (a >=- angleThreshold && a <= angleThreshold)
+                {
+                    isWallRunning = true;
+                    Vector3 alongWall = transform.TransformDirection(Vector3.forward);
+                    m_Controller.CharacterVelocity = alongWall * m_VerticalInput * wallSpeedMultiplier;
+                    m_Controller.CharacterVelocity += Vector3.down * wallGravityDown * Time.deltaTime;
+                }
             }
         }
 

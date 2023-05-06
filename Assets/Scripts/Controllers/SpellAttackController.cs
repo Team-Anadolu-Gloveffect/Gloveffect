@@ -6,10 +6,11 @@ public class SpellAttackController : MonoBehaviour
 {        
     [SerializeField] private GameObject poolParent;
     [SerializeField] private Transform rightGloveSpawnPoint, leftGloveSpawnPoint;
+    public bool activateSecondGlove = false;
 
     public void Update()
     {
-        if (Input.GetMouseButtonDown(1))
+        if (Input.GetMouseButtonDown(1) && activateSecondGlove)
             CastRightGloveSpell();
 
         if (Input.GetMouseButtonDown(0))

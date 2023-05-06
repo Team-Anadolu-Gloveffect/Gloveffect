@@ -4,46 +4,50 @@ using UnityEngine.UI;
 
 public class SkillActivator : MonoBehaviour
 {
-    public GameObject player;
-    public GameObject gameManager;
-    
-    private Button sprintButton;
-    private Button doubleJumpButton;
-    private Button slideButton;
-    private Button wallRideButton;
-    private Button slowMotionButton;
+    [SerializeField] private GameObject player;
+    [SerializeField] private GameObject gameManager;
+
+    [SerializeField] private Button sprintButton;
+    [SerializeField] private Button doubleJumpButton;
+    [SerializeField] private Button slideButton;
+    [SerializeField] private Button wallRideButton;
+    [SerializeField] private Button slowMotionButton;
+    [SerializeField] private Button secondGloveButton;
+    [SerializeField] private Button kickButton;
+    [SerializeField] private Button shieldButton;
+    [SerializeField] private Button crossPunchButton;
+    [SerializeField] private Button upperCutButton;
 
     private PlayerInputHandler playerInputHandler;
     private SkillPointManager skillPointManager;
     private TimeManager timeManager;
     private PlayerCharacterController characterController;
     private WallRun wallRun;
+    private SpellAttackController spellAttackController;
+    private PlayerCombat playerCombat;
 
     private void Start()
     {
-        skillPointManager = GameObject.Find("GameManager").GetComponent<SkillPointManager>();
-        
-        sprintButton = GameObject.Find("SprintSkill").GetComponent<Button>();
+        skillPointManager = gameManager.GetComponent<SkillPointManager>();
+
         sprintButton.onClick.AddListener(ActivateSprint);
-        
-        doubleJumpButton = GameObject.Find("DoubleJumpSkill").GetComponent<Button>();
         doubleJumpButton.onClick.AddListener(ActivateDoubleJump);
-        
-        slideButton = GameObject.Find("SlideSkill").GetComponent<Button>();
         slideButton.onClick.AddListener(ActivateSlide);
-        
-        wallRideButton = GameObject.Find("WallRideSkill").GetComponent<Button>();
         wallRideButton.onClick.AddListener(ActivateWallRide);
-        
-        slowMotionButton = GameObject.Find("SlowMotionSkill").GetComponent<Button>();
         slowMotionButton.onClick.AddListener(ActivateSlowMotion);
+        secondGloveButton.onClick.AddListener(ActivateSecondGlove);
+        kickButton.onClick.AddListener(ActivateKick);
+        shieldButton.onClick.AddListener(ActivateShield);
+        crossPunchButton.onClick.AddListener(ActivateCrossPunch);
+        upperCutButton.onClick.AddListener(ActivateUpperCut);
     }
 
     private void ActivateSprint()
     {
-        if (skillPointManager.skillPoints >= 2)
+        if (skillPointManager.SkillPoints >= 2)
         {
-            skillPointManager.skillPoints -= 2;
+            skillPointManager.SkillPoints -= 2;
+            skillPointManager.UpdateSkillPointText();
             playerInputHandler = player.GetComponent<PlayerInputHandler>();
             playerInputHandler.activateSprint = true;
             sprintButton.interactable = false;
@@ -52,9 +56,10 @@ public class SkillActivator : MonoBehaviour
     
     private void ActivateDoubleJump()
     {
-        if (skillPointManager.skillPoints >= 4)
+        if (skillPointManager.SkillPoints >= 4)
         {
-            skillPointManager.skillPoints -= 4;
+            skillPointManager.SkillPoints -= 4;
+            skillPointManager.UpdateSkillPointText();
             characterController = player.GetComponent<PlayerCharacterController>();
             characterController.activateDoubleJump = true;   
             doubleJumpButton.interactable = false;
@@ -63,9 +68,10 @@ public class SkillActivator : MonoBehaviour
     
     private void ActivateSlide()
     {
-        if (skillPointManager.skillPoints >= 4)
+        if (skillPointManager.SkillPoints >= 4)
         {
-            skillPointManager.skillPoints -= 4;
+            skillPointManager.SkillPoints -= 4;
+            skillPointManager.UpdateSkillPointText();
             playerInputHandler = player.GetComponent<PlayerInputHandler>();
             playerInputHandler.activateSlide = true;
             slideButton.interactable = false;
@@ -74,9 +80,10 @@ public class SkillActivator : MonoBehaviour
     
     private void ActivateWallRide()
     {
-        if (skillPointManager.skillPoints >= 6)
+        if (skillPointManager.SkillPoints >= 6)
         {
-            skillPointManager.skillPoints -= 6;
+            skillPointManager.SkillPoints -= 6;
+            skillPointManager.UpdateSkillPointText();
             wallRun = player.GetComponent<WallRun>();
             wallRun.activateWallrun = true;
             wallRideButton.interactable = false;
@@ -85,12 +92,73 @@ public class SkillActivator : MonoBehaviour
     
     private void ActivateSlowMotion()
     {
-        if (skillPointManager.skillPoints >= 6)
+        if (skillPointManager.SkillPoints >= 6)
         {
-            skillPointManager.skillPoints -= 6;
+            skillPointManager.SkillPoints -= 6;
+            skillPointManager.UpdateSkillPointText();
             timeManager = gameManager.GetComponent<TimeManager>();
             timeManager.activateSlowMotion = true;
             slowMotionButton.interactable = false;
+        }
+    }
+
+    private void ActivateSecondGlove()
+    {
+        if (skillPointManager.SkillPoints >= 2)
+        {
+            skillPointManager.SkillPoints -= 2;
+            skillPointManager.UpdateSkillPointText();
+            spellAttackController = player.GetComponent<SpellAttackController>();
+            spellAttackController.activateSecondGlove = true;
+            secondGloveButton.interactable = false;
+        }
+    }
+    
+    private void ActivateShield()
+    {
+        if (skillPointManager.SkillPoints >= 4)
+        {
+            skillPointManager.SkillPoints -= 4;
+            skillPointManager.UpdateSkillPointText();
+            playerCombat = player.GetComponent<PlayerCombat>();
+            playerCombat.activateShield = true;
+            shieldButton.interactable = false;
+        }
+    }
+    
+    private void ActivateKick()
+    {
+        if (skillPointManager.SkillPoints >= 4)
+        {
+            skillPointManager.SkillPoints -= 4;
+            skillPointManager.UpdateSkillPointText();
+            playerCombat = player.GetComponent<PlayerCombat>();
+            playerCombat.activateKick = true;
+            kickButton.interactable = false;
+        }
+    }
+    
+    private void ActivateCrossPunch()
+    {
+        if (skillPointManager.SkillPoints >= 6)
+        {
+            skillPointManager.SkillPoints -= 6;
+            skillPointManager.UpdateSkillPointText();
+            playerCombat = player.GetComponent<PlayerCombat>();
+            playerCombat.activateCrossPunch = true;
+            crossPunchButton.interactable = false;
+        }
+    }
+    
+    private void ActivateUpperCut()
+    {
+        if (skillPointManager.SkillPoints >= 6)
+        {
+            skillPointManager.SkillPoints -= 6;
+            skillPointManager.UpdateSkillPointText();
+            playerCombat = player.GetComponent<PlayerCombat>();
+            playerCombat.activateUpperCut = true;
+            upperCutButton.interactable = false;
         }
     }
 }

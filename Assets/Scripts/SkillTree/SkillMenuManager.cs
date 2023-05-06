@@ -1,24 +1,26 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class SkillMenuManager : MonoBehaviour
 {
-    public GameObject skillTreePanel;
+    [SerializeField] private GameObject skillTreePanel;
 
     private void Awake()
     {
         skillTreePanel.SetActive(false);
     }
 
-    void Update()
+    private void Update()
     {
-        if (Input.GetKeyDown("e"))
+        HandleSkillTreePanelActivation();
+    }
+
+    private void HandleSkillTreePanelActivation()
+    {
+        if (Input.GetKeyDown(KeyCode.E))
         {
             skillTreePanel.SetActive(true);
         }
-        if (Input.GetKeyUp("e"))
+        else if (Input.GetKeyUp(KeyCode.E))
         {
             skillTreePanel.SetActive(false);
         }
