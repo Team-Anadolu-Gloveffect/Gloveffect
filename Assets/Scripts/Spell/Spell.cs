@@ -1,7 +1,7 @@
 using Enums;
 using UnityEngine;
 
-public class Spell : MonoBehaviour
+public class Spell : MonoBehaviour, IPooledObject
 {
     public float SpellSpeed = 10f;
     public SpellTypes spellType;
@@ -12,16 +12,14 @@ public class Spell : MonoBehaviour
     {
         direction = transform.forward;
     }
-    private void OnEnable()
+    public void OnObjectSpawn()
     {      
-        Invoke(nameof(Disable), 3f);
+        Invoke(nameof(OnObjectReturn), 3f);
     }
 
-    private void Disable()
+    public void OnObjectReturn()
     {
-        string spellTag = gameObject.tag;
-        GameObject spellToReturn = gameObject;
-        ObjectPoolingManager.Instance.ReturnToPool(spellTag,spellToReturn);
+        gameObject.SetActive(false);
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -41,7 +39,7 @@ public class Spell : MonoBehaviour
         {
             int damage = ElementalReaction.ElementTable[spellType][enemy.enemyType];
             enemy.TakeDamage(damage);
-            Disable();
+            OnObjectReturn();
         }
     }
     private void FixedUpdate()

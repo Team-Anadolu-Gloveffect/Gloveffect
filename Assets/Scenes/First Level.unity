@@ -21018,13 +21018,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0dda8dd894f536c4bbf50b8775caa853, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnedEnemy: 0
+  killedEnemy: 0
   totalEnemy: 15
   spawnPoints:
   - {fileID: 684154760}
   - {fileID: 1639124689}
   - {fileID: 201477535}
   enemyType: 0
+  poolSize: 5
+  poolParent: {fileID: 965157295}
 --- !u!1 &1344942881
 GameObject:
   m_ObjectHideFlags: 0

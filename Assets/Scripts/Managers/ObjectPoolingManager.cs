@@ -42,7 +42,6 @@ public class ObjectPoolingManager : MonoBehaviour
                 spell.SetActive(false);
                 objectPool.Enqueue(spell);
             }
-
             poolDictionary.Add(pool.tag, objectPool);
         }
     }
@@ -60,27 +59,6 @@ public class ObjectPoolingManager : MonoBehaviour
         }
 
         poolDictionary[tag].Enqueue(objectToSpawn);
-
         return objectToSpawn;
-    }
-
-    public void ReturnToPool(string tag, GameObject objectToReturn)
-    {
-        //objectToReturn.GetComponent<Spell>().direction = Vector3.zero;
-        objectToReturn.SetActive(false);
-        poolDictionary[tag].Enqueue(objectToReturn);
-    }
-    public bool IsPoolAllActive(string tag)
-    {
-        Queue<GameObject> pool = poolDictionary[tag];
-        foreach (GameObject obj in pool)
-        {
-            if (obj == null || !obj.activeInHierarchy)
-            {
-                Debug.Log("asdjasd");
-                return false;
-            }
-        }
-        return true;
     }
 }

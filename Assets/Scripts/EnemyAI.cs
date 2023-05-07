@@ -1,6 +1,8 @@
+using System;
 using Enums;
 using UnityEngine;
 using UnityEngine.AI;
+using Random = UnityEngine.Random;
 
 public class EnemyAI : MonoBehaviour
 {
@@ -21,13 +23,16 @@ public class EnemyAI : MonoBehaviour
     private bool _walkPointSet;
     private string _enemyTag;
     private float _enemySpellSpeed;
+    private EnemySpawnController _enemySpawnController;
 
     public SpellTypes enemyType;
 
     private void Start()
     {
         _enemyTag = gameObject.tag;
-        //Debug.Log(_enemyTag);
+        Debug.Log(_enemyTag);
+        _enemySpawnController = FindObjectOfType<EnemySpawnController>();
+        
     }
 
     private void Awake()
@@ -110,13 +115,13 @@ public class EnemyAI : MonoBehaviour
 
         if (enemyHealth <= 0)
         {
+            _enemySpawnController.EnemyKilled();
             Invoke(nameof(ReturnPool), 0f);
         }
     }
     private void ReturnPool()
     {
-        string enemyTag = gameObject.tag;
-        GameObject enemyToReturn = gameObject;
-        ObjectPoolingManager.Instance.ReturnToPool(enemyTag,enemyToReturn);
+        enemyHealth = 3;
+        gameObject.SetActive(false);
     }
 }
