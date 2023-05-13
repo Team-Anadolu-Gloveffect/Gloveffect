@@ -1,3 +1,4 @@
+using System.Collections;
 using Enums;
 using UnityEngine;
 
@@ -5,7 +6,6 @@ public class Spell : MonoBehaviour, IPooledObject
 {
     public float SpellSpeed = 10f;
     public SpellTypes spellType;
-
     public Vector3 direction = Vector3.zero;
 
     private void Start()
@@ -17,9 +17,9 @@ public class Spell : MonoBehaviour, IPooledObject
         Invoke(nameof(OnObjectReturn), 3f);
     }
 
-    public void OnObjectReturn()
+    private void OnObjectReturn()
     {
-        gameObject.SetActive(false);
+        ObjectPoolingManager.Instance.ReturnToPool(gameObject.tag, gameObject);
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -30,9 +30,8 @@ public class Spell : MonoBehaviour, IPooledObject
             if (explosion != null)
             {
                 explosion.transform.position = collision.contacts[0].point;
-                explosion.SetActive(true);
             }           
-        }
+        } 
         
         EnemyAI enemy = collision.gameObject.GetComponent<EnemyAI>();
         if (enemy != null)

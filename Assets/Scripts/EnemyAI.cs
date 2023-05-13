@@ -29,14 +29,13 @@ public class EnemyAI : MonoBehaviour
 
     private void Start()
     {
-        _enemyTag = gameObject.tag;
-        Debug.Log(_enemyTag);
         _enemySpawnController = FindObjectOfType<EnemySpawnController>();
-        
     }
 
     private void Awake()
     {
+        _enemyTag = gameObject.tag;
+        Debug.Log(_enemyTag);
         player = GameObject.FindGameObjectWithTag("Player").transform;
         enemy = GetComponent<NavMeshAgent>();
     }
@@ -108,20 +107,20 @@ public class EnemyAI : MonoBehaviour
     {
         _alreadyAttacked = false;
     }
-
     public void TakeDamage(float damage)
     {
         enemyHealth -= damage;
 
         if (enemyHealth <= 0)
         {
+            ReturnPool();
+            //Invoke(nameof(ReturnPool), 0f);
             _enemySpawnController.EnemyKilled();
-            Invoke(nameof(ReturnPool), 0f);
         }
     }
     private void ReturnPool()
     {
         enemyHealth = 3;
-        gameObject.SetActive(false);
+        ObjectPoolingManager.Instance.ReturnToPool(gameObject.tag,gameObject);
     }
 }

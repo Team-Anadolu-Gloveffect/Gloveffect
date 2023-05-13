@@ -26,7 +26,6 @@ public class SpellAttackController : MonoBehaviour
             rightGloveSpell.transform.position = rightGloveSpawnPoint.position;
             rightGloveSpell.transform.rotation = rightGloveSpawnPoint.rotation;
             rightGloveSpell.GetComponent<Spell>().direction = transform.forward;
-            rightGloveSpell.SetActive(true);
         }
     }
     public void CastLeftGloveSpell()
@@ -38,7 +37,6 @@ public class SpellAttackController : MonoBehaviour
             leftGloveSpell.transform.position = leftGloveSpawnPoint.position;
             leftGloveSpell.transform.rotation = leftGloveSpawnPoint.rotation;
             leftGloveSpell.GetComponent<Spell>().direction = transform.forward;
-            leftGloveSpell.SetActive(true);
         }   
     }
 }

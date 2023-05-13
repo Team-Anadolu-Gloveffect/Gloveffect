@@ -52,13 +52,18 @@ public class ObjectPoolingManager : MonoBehaviour
         objectToSpawn.SetActive(true);
         
         IPooledObject pooledObject = objectToSpawn.GetComponent<IPooledObject>();
-
-        if (pooledObject != null)
-        {
-            pooledObject.OnObjectSpawn();
-        }
-
-        poolDictionary[tag].Enqueue(objectToSpawn);
+        if (pooledObject != null) pooledObject.OnObjectSpawn();
+        
         return objectToSpawn;
+    }
+    public void ReturnToPool(string tag, GameObject objectToReturn)
+    {
+        if (!poolDictionary.ContainsKey(tag))
+        {
+            Debug.LogWarning("Pool with tag " + tag + " doesn't exist.");
+            return;
+        }
+        poolDictionary[tag].Enqueue(objectToReturn);
+        objectToReturn.SetActive(false);
     }
 }

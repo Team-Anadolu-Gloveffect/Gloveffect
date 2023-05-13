@@ -4859,6 +4859,7 @@ GameObject:
   - component: {fileID: 3014421648006951353}
   - component: {fileID: 3040584714316628553}
   - component: {fileID: 5158938651681314584}
+  - component: {fileID: 2109032301213790463}
   m_Layer: 0
   m_Name: LumisiumExplosion
   m_TagString: LumisiumExplosion
@@ -9748,6 +9749,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4965e9d90c4cad4429399b50c633b72a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2109032301213790463
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3103107385377815081}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 487ed716edcc1584c94f1ab5513ba046, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &3103582364810780819

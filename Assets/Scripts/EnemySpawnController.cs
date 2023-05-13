@@ -31,7 +31,7 @@ public class EnemySpawnController : MonoBehaviour
             enemy.transform.parent = poolParent.transform;
             Transform spawnPoint = spawnPoints[Random.Range(0, spawnPoints.Length)];
             enemy.transform.position = spawnPoint.position;
-            enemy.SetActive(true);
+            //enemy.SetActive(true);
             Debug.Log("Enemy Spawned");
         }
     }
@@ -48,6 +48,10 @@ public class EnemySpawnController : MonoBehaviour
     public void EnemyKilled()
     {
         killedEnemy++;
-        if (killedEnemy < totalEnemy) SpawnEnemy();
+        if (killedEnemy < totalEnemy)
+        {
+            Debug.Log("Enemy can spawn");
+            SpawnEnemy();
+        }
     }
 }

@@ -14414,6 +14414,7 @@ GameObject:
   - component: {fileID: 6256785834246188356}
   - component: {fileID: 6256785834232542694}
   - component: {fileID: 2544639969626896730}
+  - component: {fileID: -1453980834580718524}
   m_Layer: 0
   m_Name: DarkMagicExplosion
   m_TagString: DarkMagicExplosion
@@ -19362,6 +19363,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4965e9d90c4cad4429399b50c633b72a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-1453980834580718524
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6256785834239627420}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 487ed716edcc1584c94f1ab5513ba046, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &6256785834239816946
