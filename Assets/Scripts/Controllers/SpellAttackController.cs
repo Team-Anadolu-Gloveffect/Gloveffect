@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class SpellAttackController : MonoBehaviour
@@ -7,17 +5,21 @@ public class SpellAttackController : MonoBehaviour
     [SerializeField] private GameObject poolParent;
     [SerializeField] private Transform rightGloveSpawnPoint, leftGloveSpawnPoint;
     public bool activateSecondGlove = false;
+    private bool _canSpellUse; 
 
     public void Update()
     {
-        if (Input.GetMouseButtonDown(1) /*&& activateSecondGlove*/)
-            CastRightGloveSpell();
+        if (_canSpellUse)
+        {
+            if (Input.GetMouseButtonDown(1) /*&& activateSecondGlove*/)
+                CastRightGloveSpell();
 
-        if (Input.GetMouseButtonDown(0))
-            CastLeftGloveSpell();
+            if (Input.GetMouseButtonDown(0))
+                CastLeftGloveSpell();
+        }
     }
 
-    public void CastRightGloveSpell()
+    private void CastRightGloveSpell()
     {
         GameObject rightGloveSpell = ObjectPoolingManager.Instance.GetPooledObject(TagManager.rightGloveTag);
         if (rightGloveSpell != null)
@@ -28,7 +30,7 @@ public class SpellAttackController : MonoBehaviour
             rightGloveSpell.GetComponent<Spell>().direction = transform.forward;
         }
     }
-    public void CastLeftGloveSpell()
+    private void CastLeftGloveSpell()
     {
         GameObject leftGloveSpell = ObjectPoolingManager.Instance.GetPooledObject(TagManager.leftGloveTag);
         if (leftGloveSpell != null)
@@ -39,4 +41,22 @@ public class SpellAttackController : MonoBehaviour
             leftGloveSpell.GetComponent<Spell>().direction = transform.forward;
         }   
     }
+    
+    private void OnEnable()
+    {
+        RageModeController.OnRageModeChanged += HandleRageModeChanged;
+    }
+
+    private void OnDisable()
+    {
+        RageModeController.OnRageModeChanged -= HandleRageModeChanged;
+    }
+
+    private void HandleRageModeChanged(bool isRageModeActive)
+    {
+        if (isRageModeActive) _canSpellUse = true;
+
+        else _canSpellUse = false;
+    }
 }
+

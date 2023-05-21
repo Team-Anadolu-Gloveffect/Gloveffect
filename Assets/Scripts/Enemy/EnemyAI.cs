@@ -17,6 +17,7 @@ public class EnemyAI : MonoBehaviour
     [SerializeField] private float sightRange, attackRange;      
     [SerializeField] private bool playerInSightRange, playerInAttackRange;
     [SerializeField] private Transform enemySpellSpawnPoint;
+    [SerializeField] private GameObject orbPrefab;
     #endregion
 
     bool _alreadyAttacked;
@@ -113,8 +114,8 @@ public class EnemyAI : MonoBehaviour
 
         if (enemyHealth <= 0)
         {
+            SpawnOrb(gameObject.transform.position);
             ReturnPool();
-            //Invoke(nameof(ReturnPool), 0f);
             _enemySpawnController.EnemyKilled();
         }
     }
@@ -122,5 +123,9 @@ public class EnemyAI : MonoBehaviour
     {
         enemyHealth = 3;
         ObjectPoolingManager.Instance.ReturnToPool(gameObject.tag,gameObject);
+    }
+    private void SpawnOrb(Vector3 spawnPosition)
+    {
+        Instantiate(orbPrefab, spawnPosition, Quaternion.identity);
     }
 }
