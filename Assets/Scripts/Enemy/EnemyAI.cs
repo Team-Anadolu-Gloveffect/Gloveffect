@@ -21,10 +21,13 @@ public class EnemyAI : MonoBehaviour
     #endregion
 
     bool _alreadyAttacked;
+    private bool isMoving;
+    private bool isNotMoving;
     private bool _walkPointSet;
     private string _enemyTag;
     private float _enemySpellSpeed;
     private EnemySpawnController _enemySpawnController;
+    [SerializeField] private Animator animator;
 
     public SpellTypes enemyType;
 
@@ -43,12 +46,16 @@ public class EnemyAI : MonoBehaviour
 
     private void Update()
     {
+        isMoving = (enemy.velocity.magnitude > 0 || (playerInSightRange && !playerInAttackRange));
+        isNotMoving = (enemy.velocity.magnitude == 0);
+        
         playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
         playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
 
         if (!playerInSightRange && !playerInAttackRange) Patroling();
         if (playerInSightRange && !playerInAttackRange) ChasePlayer();
         if (playerInAttackRange && playerInSightRange) AttackPlayer();
+        MoveEnemyAnimation();
     }
 
     private void Patroling()
@@ -103,6 +110,7 @@ public class EnemyAI : MonoBehaviour
             _enemySpellSpeed = enemySpell.GetComponent<Spell>().SpellSpeed;
             enemySpell.SetActive(true);
         }
+        AttackAnimation();
     }
     private void ResetAttack()
     {
@@ -118,6 +126,7 @@ public class EnemyAI : MonoBehaviour
             ReturnPool();
             _enemySpawnController.EnemyKilled();
         }
+        EnemyTakeDamageAnimation();
     }
     private void ReturnPool()
     {
@@ -127,5 +136,39 @@ public class EnemyAI : MonoBehaviour
     private void SpawnOrb(Vector3 spawnPosition)
     {
         Instantiate(orbPrefab, spawnPosition, Quaternion.identity);
+    }
+    
+    void MoveEnemyAnimation()
+    {
+        if (isMoving)
+        {
+            animator.SetFloat("move", 1);
+        }
+        else if (isNotMoving)
+        {
+            animator.SetFloat("move", -1);
+        }
+    }
+    
+    void EnemyTakeDamageAnimation()
+    {
+        animator.SetFloat("damage", 1);
+        Invoke(nameof(ResetDamageAnimation), 1f);
+    }
+
+    void ResetDamageAnimation()
+    {
+        animator.SetFloat("damage", -1);
+    }
+
+    void AttackAnimation()
+    {
+        animator.SetFloat("attack", 1);
+        Invoke(nameof(ResetAttackAnimation), 1f);
+    }
+
+    void ResetAttackAnimation()
+    {
+        animator.SetFloat("attack", -1);
     }
 }

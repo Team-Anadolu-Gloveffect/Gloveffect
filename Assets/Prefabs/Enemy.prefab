@@ -251,6 +251,7 @@ MonoBehaviour:
   playerInAttackRange: 0
   enemySpellSpawnPoint: {fileID: 8528544981028439440}
   orbPrefab: {fileID: 2642799834436059079, guid: a6cd1d7f02ebd22419496ff09a097010, type: 3}
+  animator: {fileID: 0}
   enemyType: 0
 --- !u!1 &8528544981028439441
 GameObject:
