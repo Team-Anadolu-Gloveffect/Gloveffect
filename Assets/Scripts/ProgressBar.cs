@@ -38,7 +38,6 @@ public class ProgressBar : MonoBehaviour
             rageButton.SetActive(false);
             StartCoroutine(DecreaseRage());
         }
-        if(Input.GetKeyDown(KeyCode.Space)) IncreaseRage(25);
     }
 
     void GetCurrentFill()

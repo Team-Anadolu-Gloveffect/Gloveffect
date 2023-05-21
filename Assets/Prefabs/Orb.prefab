@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 2642799834435716439}
   - component: {fileID: 2642799834455113305}
   - component: {fileID: 2642799834456073843}
+  - component: {fileID: 4490521865102750742}
+  - component: {fileID: 8098604012268311001}
   m_Layer: 0
   m_Name: Orb
   m_TagString: Untagged
@@ -4838,6 +4840,32 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!136 &4490521865102750742
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2642799834436059079}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.28400007
+  m_Height: 0.56800014
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &8098604012268311001
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2642799834436059079}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35c3c30b8f3919243b901167f9f50309, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2642799834436105441
 GameObject:
   m_ObjectHideFlags: 0
