@@ -10,12 +10,11 @@ public class PlayerCombat : MonoBehaviour
     public bool isShielding = false;
     private float shieldTimer = 0f;
     public bool activateShield = false;
-    
+
     [Header("Combat Actions")]
-    public bool activateKick = false;
     public bool activateCrossPunch = false;
     public bool activateUpperCut = false;
-    
+
     [Header("Health")]
     public float PlayerHealth = 1f;
 
@@ -79,11 +78,7 @@ public class PlayerCombat : MonoBehaviour
 
     private void HandleAttacks()
     {
-        if (Input.GetKeyDown(KeyCode.G) && activateKick)
-        {
-            PerformAttack("Kick");
-        }
-        else if (Input.GetKeyDown(KeyCode.F) && activateCrossPunch)
+        if (Input.GetKeyDown(KeyCode.F) && activateCrossPunch)
         {
             PerformAttack("CrossPunch");
         }

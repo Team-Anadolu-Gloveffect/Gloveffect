@@ -11,7 +11,7 @@ public class SpellAttackController : MonoBehaviour
     {
         if (_canSpellUse)
         {
-            if (Input.GetMouseButtonDown(1) /*&& activateSecondGlove*/)
+            if (Input.GetMouseButtonDown(1) && activateSecondGlove)
                 CastRightGloveSpell();
 
             if (Input.GetMouseButtonDown(0))

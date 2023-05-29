@@ -13,7 +13,6 @@ public class SkillActivator : MonoBehaviour
     [SerializeField] private Button wallRideButton;
     [SerializeField] private Button slowMotionButton;
     [SerializeField] private Button secondGloveButton;
-    [SerializeField] private Button kickButton;
     [SerializeField] private Button shieldButton;
     [SerializeField] private Button crossPunchButton;
     [SerializeField] private Button upperCutButton;
@@ -36,7 +35,6 @@ public class SkillActivator : MonoBehaviour
         wallRideButton.onClick.AddListener(ActivateWallRide);
         slowMotionButton.onClick.AddListener(ActivateSlowMotion);
         secondGloveButton.onClick.AddListener(ActivateSecondGlove);
-        kickButton.onClick.AddListener(ActivateKick);
         shieldButton.onClick.AddListener(ActivateShield);
         crossPunchButton.onClick.AddListener(ActivateCrossPunch);
         upperCutButton.onClick.AddListener(ActivateUpperCut);
@@ -125,19 +123,7 @@ public class SkillActivator : MonoBehaviour
             shieldButton.interactable = false;
         }
     }
-    
-    private void ActivateKick()
-    {
-        if (skillPointManager.SkillPoints >= 4)
-        {
-            skillPointManager.SkillPoints -= 4;
-            skillPointManager.UpdateSkillPointText();
-            playerCombat = player.GetComponent<PlayerCombat>();
-            playerCombat.activateKick = true;
-            kickButton.interactable = false;
-        }
-    }
-    
+
     private void ActivateCrossPunch()
     {
         if (skillPointManager.SkillPoints >= 6)

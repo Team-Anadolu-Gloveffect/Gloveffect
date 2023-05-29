@@ -149,7 +149,7 @@ namespace Player
             return Mathf.LerpAngle(cameraAngle, targetAngle, Mathf.Max(m_ElapsedTimeSinceWallAttach, m_ElapsedTimeSinceWallDetach) / cameraTransitionDuration);
         }
 
-        float GetSide()
+        public float GetSide()
         {
             if (isWallRunning)
             {
