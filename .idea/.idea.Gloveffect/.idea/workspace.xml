@@ -8,9 +8,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/Assets/Animations/Enemy/EnemyTypeManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/RageOrb.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/../../../../Unity/GloveffectTest/Assets/Scripts/SkillTree/SkillActivator.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -34,15 +32,15 @@
   },
   &quot;keyToStringList&quot;: {
     &quot;rider.external.source.directories&quot;: [
-      &quot;C:\\Users\\metro\\AppData\\Roaming\\JetBrains\\Rider2022.3\\resharper-host\\DecompilerCache&quot;,
-      &quot;C:\\Users\\metro\\AppData\\Roaming\\JetBrains\\Rider2022.3\\resharper-host\\SourcesCache&quot;,
-      &quot;C:\\Users\\metro\\AppData\\Local\\Symbols\\src&quot;
+      &quot;C:\\Users\\ahmet\\AppData\\Roaming\\JetBrains\\Rider2022.3\\resharper-host\\DecompilerCache&quot;,
+      &quot;C:\\Users\\ahmet\\AppData\\Roaming\\JetBrains\\Rider2022.3\\resharper-host\\SourcesCache&quot;,
+      &quot;C:\\Users\\ahmet\\AppData\\Local\\Symbols\\src&quot;
     ]
   }
 }</component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Start Unity" type="RunUnityExe" factoryName="Unity Executable">
-      <option name="EXE_PATH" value="D:\Program Files\2021.3.7f1\Editor\Unity.exe" />
+      <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\2021.3.7f1\Editor\Unity.exe" />
       <option name="PROGRAM_PARAMETERS" value="-projectPath &quot;D:\METRO\BILGI\Spring\New Platforms for Game Development\Gloveffect&quot; -debugCodeOptimization" />
       <option name="WORKING_DIRECTORY" value="D:\METRO\BILGI\Spring\New Platforms for Game Development\Gloveffect" />
       <option name="PASS_PARENT_ENVS" value="1" />
@@ -50,7 +48,7 @@
       <method v="2" />
     </configuration>
     <configuration name="UnitTests (batch mode)" type="RunUnityExe" factoryName="Unity Executable">
-      <option name="EXE_PATH" value="D:\Program Files\2021.3.7f1\Editor\Unity.exe" />
+      <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\2021.3.7f1\Editor\Unity.exe" />
       <option name="PROGRAM_PARAMETERS" value="-runTests -batchmode -projectPath &quot;D:\METRO\BILGI\Spring\New Platforms for Game Development\Gloveffect&quot; -testResults Logs/results.xml -testPlatform EditMode -debugCodeOptimization" />
       <option name="WORKING_DIRECTORY" value="D:\METRO\BILGI\Spring\New Platforms for Game Development\Gloveffect" />
       <option name="PASS_PARENT_ENVS" value="1" />
@@ -116,6 +114,13 @@
       <workItem from="1685317511507" duration="82000" />
       <workItem from="1685317614876" duration="449000" />
       <workItem from="1685318600954" duration="328000" />
+      <workItem from="1686218461053" duration="526000" />
+      <workItem from="1686219095975" duration="594000" />
+      <workItem from="1686220911457" duration="611000" />
+      <workItem from="1686225663599" duration="613000" />
+      <workItem from="1686227026682" duration="121000" />
+      <workItem from="1686228242044" duration="1602000" />
+      <workItem from="1686230797468" duration="140000" />
     </task>
     <servers />
   </component>
