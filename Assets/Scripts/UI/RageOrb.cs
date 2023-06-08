@@ -2,13 +2,17 @@ using UnityEngine;
 
 public class RageOrb : MonoBehaviour
 {
-    private bool _canTakeOrb;
+    private bool _canTakeOrb = true;
     private void OnCollisionEnter(Collision collision)
     {
-        ProgressBar increaseRage = collision.gameObject.GetComponent<ProgressBar>();
-        if (collision.collider.CompareTag("Player") && _canTakeOrb)
+        if (collision.collider.CompareTag("Player"))
         {
-            increaseRage.IncreaseRage(25);
+            ProgressBar increaseRage = collision.gameObject.GetComponent<ProgressBar>();
+            if (increaseRage != null && _canTakeOrb)
+            {
+                Debug.Log("Increased Rage");
+                increaseRage.IncreaseRage(25);
+            }
             Destroy(gameObject);
         }
     }
