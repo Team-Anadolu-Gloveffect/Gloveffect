@@ -7,6 +7,6 @@ public class SceneController : MonoBehaviour
 {
     public void StartGame()
     {
-        SceneManager.LoadScene("First Level");
+        SceneManager.LoadScene("FlametronLevel");
     }
 }

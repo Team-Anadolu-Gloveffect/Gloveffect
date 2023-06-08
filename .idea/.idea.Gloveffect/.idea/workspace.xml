@@ -8,7 +8,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/RageOrb.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/FogScroller.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -121,6 +121,8 @@
       <workItem from="1686227026682" duration="121000" />
       <workItem from="1686228242044" duration="1602000" />
       <workItem from="1686230797468" duration="140000" />
+      <workItem from="1686230955085" duration="237000" />
+      <workItem from="1686231586836" duration="2246000" />
     </task>
     <servers />
   </component>
