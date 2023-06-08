@@ -1,6 +1,15 @@
 fileFormatVersion: 2
+<<<<<<< Updated upstream
+<<<<<<<< Updated upstream:Assets/Art/Multistory Dungeons 2.meta
 guid: 2de5b5a5954a719489708e424c977e5f
 folderAsset: yes
+========
+guid: beb56f5f0fd791345b719bcf994e915c
+>>>>>>>> Stashed changes:Assets/Scenes/First Level.unity.meta
+=======
+guid: 1423d00a63e6f8249851d782d0a159c7
+folderAsset: yes
+>>>>>>> Stashed changes
 DefaultImporter:
   externalObjects: {}
   userData: 
